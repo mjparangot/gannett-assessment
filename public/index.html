@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+          <meta charset='utf-8'>
+          <meta name='viewport' content='width=device-width, initial-scale=1'>
+          <title>Gannett Tech Assessment</title>
+          <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+          <link rel='stylesheet' type='text/css' href='styles.css'>
+          <script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+          <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    </head>
+
+    <body>
+        <p>Drag the left box over the right box to display the timestamp</p>
+        <br>
+        <div id='draggable' class='box ui-widget-content'>
+            <div>Draggable Box</div>
+        </div>
+        <div id='static' class='box ui-widget-content'>
+            <div id="static-text">Static Box</div>
+        </div>
+    </body>
+
+    <script>
+        $('#draggable').draggable();
+        $('#static').droppable({
+            tolerance: 'touch',
+            over: function(event, ui) {
+                $('#static-text').text(new Date().toLocaleString());
+            },
+            out: function(event, ui) {
+                $('#static-text').text("Static Box");
+            }
+        });
+    </script>
+</html>
